@@ -5,7 +5,7 @@ import UserItem from "./UserItem";
 import GithubContext from "../../context/github/GithubContext";
 
 function UserResults() {
-  const { users, loading } = useContext(GithubContext);
+  const { users, loading, searchUsers } = useContext(GithubContext);
 
   if (!loading) {
     return (
