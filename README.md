@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+<h1>Github Finder App </h1>
+A simple github search made using React. <br>
+A live Demo: https://github-finder-scisaif.vercel.app/
+
+<div><br></div>
+<hr>
+<div><br><br><br></div>
+
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
