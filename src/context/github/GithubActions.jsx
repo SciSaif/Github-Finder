@@ -1,10 +1,11 @@
 import axios from "axios";
+import { Processor } from "postcss";
 
 const github = axios.create({
   baseURL: "https://api.github.com",
-  //   headers: {
-  //     Authorization: `token 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`,
-  //   },
+  headers: {
+    Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`,
+  },
 });
 
 //get search results
