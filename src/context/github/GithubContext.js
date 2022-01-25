@@ -6,8 +6,8 @@ import githubReducer from "./GithubReducer";
 
 const GithubContext = createContext();
 
-const GITHUB_URL = "https://api.github.com";
-const GITHUB_TOKEN = "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";
+// const GITHUB_URL = "https://api.github.com";
+// const GITHUB_TOKEN = "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";
 
 //provier function
 export const GithubProvider = ({ children }) => {
@@ -25,11 +25,14 @@ export const GithubProvider = ({ children }) => {
     const params = new URLSearchParams({
       q: text,
     });
-    const response = await fetch(`${GITHUB_URL}/search/users?${params}`, {
-      headers: {
-        Authorization: `token ${GITHUB_TOKEN}`,
-      },
-    });
+    const response = await fetch(
+      `https://api.github.com/search/users?${params}`,
+      {
+        headers: {
+          Authorization: `token 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`,
+        },
+      }
+    );
 
     const { items } = await response.json();
     dispatch({
@@ -41,9 +44,9 @@ export const GithubProvider = ({ children }) => {
   //get single user
   const getUser = async (login) => {
     setLoading();
-    const response = await fetch(`${GITHUB_URL}/users/${login}`, {
+    const response = await fetch(`https://api.github.com/users/${login}`, {
       headers: {
-        Authorization: `token ${GITHUB_TOKEN}`,
+        Authorization: `token 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`,
       },
     });
 
@@ -67,10 +70,10 @@ export const GithubProvider = ({ children }) => {
     });
 
     const response = await fetch(
-      `${GITHUB_URL}/users/${login}/repos?${params}`,
+      `https://api.github.com/users/${login}/repos?${params}`,
       {
         headers: {
-          Authorization: `token ${GITHUB_TOKEN}`,
+          Authorization: `token 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`,
         },
       }
     );
@@ -95,10 +98,8 @@ export const GithubProvider = ({ children }) => {
   return (
     <GithubContext.Provider
       value={{
-        users: state.users,
-        loading: state.loading,
-        user: state.user,
-        repos: state.repos,
+        ...state,
+        dispatch,
         searchUsers,
         clearUsers,
         getUser,
